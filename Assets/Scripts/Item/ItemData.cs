@@ -15,27 +15,14 @@ public enum ItemType
 }
 
 [CreateAssetMenu(fileName = "ItemData", menuName = "ItemSO")]
-public class ItemData : ScriptableObject, IInteractable
+public class ItemData : ScriptableObject
 {
     public string itemName;
     public string description;
     public ItemType itemType;
+    public bool IsStackable;
     public Sprite itemIcon;
     public GameObject itemPrefab;
 
-    public void Interact()
-    {
-        //인벤토리에 넣기
-    }
-
-    public string ShowDescription()
-    {
-        return description;
-    }
-
-    public string ShowName()
-    {
-        return name;
-       
-    }
+    
 }

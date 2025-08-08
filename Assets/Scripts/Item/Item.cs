@@ -14,19 +14,22 @@ public interface IInteractable
 public class Item : MonoBehaviour, IInteractable
 {
 
-    ItemData itemdata;
+    public ItemData itemdata;
     public void Interact()
     {
-       
+        Debug.Log("상호작용");
+        UIManager.Instance.inventoryUI.AddInventory(this);
+        Destroy(gameObject);
+        
     }
 
     public string ShowDescription()
     {
-        throw new System.NotImplementedException();
+        return itemdata.description;
     }
 
     public string ShowName()
     {
-        throw new System.NotImplementedException();
+        return itemdata.name;
     }
 }

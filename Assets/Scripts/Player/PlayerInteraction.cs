@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
 {
-    Player player;
+    
     [SerializeField] Transform cameraTransform;
-    float rayDistance = 3f;
+    [SerializeField] Camera cam;
+    float rayDistance = 20f;
+    Vector3 cameraMiddle = new Vector3(0.5f, 0.5f, 0f);
+    IInteractable lastTriggeredInteractable;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,22 +19,30 @@ public class PlayerInteraction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        ShootRay();
+        if(lastTriggeredInteractable != null&&Input.GetKey(KeyCode.E))
+        {
+            lastTriggeredInteractable.Interact();
+        }
     }
 
     void ShootRay()
     {
-        Ray ray=new Ray();
+        Ray ray = cam.ViewportPointToRay(cameraMiddle);
         RaycastHit hit;
-        ray.origin = player.transform.position + Vector3.up;
-        ray.direction = player.transform.forward;
+        
         if(Physics.Raycast(ray,out hit,rayDistance))
         {
             IInteractable interactable=hit.collider.GetComponent<IInteractable>();
-            if(interactable!=null)
+            lastTriggeredInteractable = interactable;
+            if (interactable!=null)
             {
+                
+                UIManager.Instance.ChangeUI(UIState.InteractionUI);
                 UIManager.Instance.interactionUI.ShowObjectName(interactable);
                 UIManager.Instance.interactionUI.ShowObjectDescription(interactable);
+                
+                
             }
             
         }

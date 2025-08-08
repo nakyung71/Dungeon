@@ -2,6 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum UIState
+{
+    GameUI,
+    InventoryUI,
+    InteractionUI
+
+
+}
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
@@ -11,15 +19,34 @@ public class UIManager : MonoBehaviour
     public InventoryUI inventoryUI;
     public InteractionUI interactionUI;
 
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameUI = GetComponentInChildren<GameUI>(true); 
+        inventoryUI = GetComponentInChildren<InventoryUI>(true);
+        inventoryUI.Init();
+        interactionUI = GetComponentInChildren<InteractionUI>(true);
     }
 
-    // Update is called once per frame
-    void Update()
+    
+    public void ChangeUI(UIState state)
     {
-        
+        if(state==UIState.GameUI)
+        {
+
+        }
+        else if (state==UIState.InteractionUI)
+        {
+            interactionUI.gameObject.SetActive(true);
+        }
+        else if(state==UIState.InventoryUI)
+        {
+            inventoryUI.gameObject.SetActive(true);
+        }
     }
 }

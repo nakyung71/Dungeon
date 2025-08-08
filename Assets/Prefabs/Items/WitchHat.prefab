@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7435529502661757334}
   - component: {fileID: 3155813115695618004}
   - component: {fileID: 2282977544570172001}
+  - component: {fileID: -5545573026798374889}
   m_Layer: 0
   m_Name: WitchHat
   m_TagString: Untagged
@@ -82,6 +83,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.7063863, y: 0.5955807, z: 0.48257118}
   m_Center: {x: 0.05123496, y: 0.09911108, z: -0.0018341243}
+--- !u!114 &-5545573026798374889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2702633339914339734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b48b39f4e2b9844484dfa4c28c15c5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemdata: {fileID: 11400000, guid: 4c5407bc10b57ce4d914c8595ec20c8e, type: 2}
 --- !u!1 &5794976196744915211
 GameObject:
   m_ObjectHideFlags: 0

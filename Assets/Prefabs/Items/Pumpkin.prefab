@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 1349354188212314606}
   - component: {fileID: 786359418676524107}
   - component: {fileID: 5469994440124727732}
+  - component: {fileID: 1950195929778944013}
   m_Layer: 0
   m_Name: Pumpkin
   m_TagString: Untagged
@@ -165,3 +166,16 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.3140699
   m_Center: {x: 0, y: 0.17854798, z: -0.0073820055}
+--- !u!114 &1950195929778944013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6552480220100045732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b48b39f4e2b9844484dfa4c28c15c5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemdata: {fileID: 11400000, guid: 6a05dbded9a480a45b309ddb4fa3bc76, type: 2}

@@ -61,6 +61,7 @@ public class PlayerInput : MonoBehaviour
         inputSystem.Player.Move.canceled+= OnMove;
         inputSystem.Player.CameraMove.performed += OnCameraMove;
         inputSystem.Player.CameraMove.canceled += OnCameraMove;
+        inputSystem.Player.Inventory.started += OnInventory;
 
 
     }
@@ -72,6 +73,7 @@ public class PlayerInput : MonoBehaviour
         inputSystem.Player.Move.canceled -= OnMove;
         inputSystem.Player.CameraMove.performed -= OnCameraMove;
         inputSystem.Player.CameraMove.canceled -= OnCameraMove;
+        inputSystem.Player.Inventory.started -= OnInventory;
 
 
 
@@ -101,6 +103,9 @@ public class PlayerInput : MonoBehaviour
         rb.AddForce(Vector3.up*jumpForce,ForceMode.Impulse);
     }
 
-    
+    private void OnInventory(InputAction.CallbackContext context)
+    {
+        UIManager.Instance.ChangeUI(UIState.InventoryUI);
+    }
 
 }
