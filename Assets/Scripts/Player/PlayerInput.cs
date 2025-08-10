@@ -106,6 +106,18 @@ public class PlayerInput : MonoBehaviour
     private void OnInventory(InputAction.CallbackContext context)
     {
         UIManager.Instance.ChangeUI(UIState.InventoryUI);
+        inputSystem.Player.Disable();
+        inputSystem.UI.Enable();
+    }
+
+    private void OnInventoryHover()
+    {
+
+    }
+
+    private void OnInventorySelect()
+    {
+
     }
 
 }

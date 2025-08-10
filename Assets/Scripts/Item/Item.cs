@@ -11,15 +11,21 @@ public interface IInteractable
 
 
 }
+
+
+
 public class Item : MonoBehaviour, IInteractable
 {
 
     public ItemData itemdata;
     public void Interact()
     {
-        Debug.Log("상호작용");
-        UIManager.Instance.inventoryUI.AddInventory(this);
-        Destroy(gameObject);
+        ItemData loadedItem= DataManager.instance.GetItemInfo(this.itemdata.name);
+        UIManager.Instance.inventoryUI.AddInventory(loadedItem);
+        
+        Destroy(this.gameObject);
+        
+        
         
     }
 
