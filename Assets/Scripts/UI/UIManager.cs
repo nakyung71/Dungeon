@@ -19,6 +19,8 @@ public class UIManager : MonoBehaviour
     public InventoryUI inventoryUI;
     public InteractionUI interactionUI;
 
+    public Player player;
+
     private void Awake()
     {
         Instance = this;

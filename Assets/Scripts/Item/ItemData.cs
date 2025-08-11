@@ -23,6 +23,7 @@ public class ItemData : ScriptableObject
     public bool IsStackable;
     public Sprite itemIcon;
     public GameObject itemPrefab;
+    public GameObject equipPrefab;
 
     
 }

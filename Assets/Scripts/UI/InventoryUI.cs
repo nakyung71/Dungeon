@@ -31,6 +31,7 @@ public class InventoryUI : BaseUI
             slot.Init();
         }
         Slot.OnSlotClick += OnClickUI;
+        equipButton.onClick.AddListener(PressEquipButton);
         
     }
 
@@ -95,6 +96,14 @@ public class InventoryUI : BaseUI
     void PressEquipButton()
     {
         
+        if (selectedSlot.Slotitem.itemType == ItemType.Potions)
+        {
+            Debug.Log("사용했다");
+        }
+        else if (selectedSlot.Slotitem.itemType == ItemType.Equipment)
+        {
+            UIManager.Instance.player.Equip(selectedSlot.Slotitem);
+        }
     }
 
     void PressUnEquipButton()

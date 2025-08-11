@@ -16,5 +16,7 @@ MonoBehaviour:
   description: "\uAD11\uC6D0\uC774\uB2E4. \uB4E4\uACE0 \uB2E4\uB2C8\uBA74 \uB3C4\uC6C0\uC774
     \uB420 \uAC83\uC774\uB2E4."
   itemType: 2
+  IsStackable: 0
   itemIcon: {fileID: 21300000, guid: e4af95862f0efb244823bc9c7e45f5af, type: 3}
   itemPrefab: {fileID: 3353821774986521940, guid: e7b91991fafb2e14bbcc7d8b20117932, type: 3}
+  equipPrefab: {fileID: 3984643510880405765, guid: c27a3699c53b3324681d521f497c8134, type: 3}
