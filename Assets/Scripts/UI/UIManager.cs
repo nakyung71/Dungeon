@@ -34,7 +34,7 @@ public class UIManager : MonoBehaviour
     }
 
     
-    public void ChangeUI(UIState state)
+    public void ChangeUI(UIState state,bool on)
     {
         if(state==UIState.GameUI)
         {
@@ -42,11 +42,11 @@ public class UIManager : MonoBehaviour
         }
         else if (state==UIState.InteractionUI)
         {
-            interactionUI.gameObject.SetActive(true);
+            interactionUI.gameObject.SetActive(on);
         }
         else if(state==UIState.InventoryUI)
         {
-            inventoryUI.gameObject.SetActive(true);
+            inventoryUI.gameObject.SetActive(on);
         }
     }
 }

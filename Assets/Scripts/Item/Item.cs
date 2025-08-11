@@ -22,8 +22,11 @@ public class Item : MonoBehaviour, IInteractable
     {
         ItemData loadedItem= DataManager.instance.GetItemInfo(this.itemdata.name);
         UIManager.Instance.inventoryUI.AddInventory(loadedItem);
-        
-        Destroy(this.gameObject);
+        if(gameObject!=null)
+        {
+            Destroy(this.gameObject);
+        }
+       
         
         
         

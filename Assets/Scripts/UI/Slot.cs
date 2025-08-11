@@ -46,7 +46,9 @@ public class Slot : MonoBehaviour,IPointerClickHandler
         
         IsEmpty = false;
         image.sprite = itemData.itemIcon;
-        quantityText.text=1.ToString(); 
+        quantity++;
+        quantityText.text=quantity.ToString(); 
+        
     }
 
     public void DiscardSlotItems()
@@ -54,7 +56,8 @@ public class Slot : MonoBehaviour,IPointerClickHandler
         IsEmpty = true;
         Slotitem = null;
         image.sprite = null;
-        quantityText.text = 0.ToString();
+        quantity = 0;
+        outline.enabled = false;
     }
 
     public void OnPointerClick(PointerEventData eventData)

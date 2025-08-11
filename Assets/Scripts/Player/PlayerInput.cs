@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEngine.InputSystem.UI.VirtualMouseInput;
@@ -11,7 +12,8 @@ public class PlayerInput : MonoBehaviour
  
     Vector2 inputVector;
     private float moveSpeed = 5f;
-    private float jumpForce = 5f;
+    private float jumpForce = 30f;
+
 
 
     Vector2 cursorMove;
@@ -37,7 +39,7 @@ public class PlayerInput : MonoBehaviour
     {
         Mathf.Clamp(turnSide, minrot, maxRot);
         Mathf.Clamp(turnUpDown, minrot, maxRot);
-        cameraTransform.Rotate(Vector3.up * cursorMove.x);
+        //cameraTransform.Rotate(Vector3.up * cursorMove.x);
 
         turnSide += cursorMove.x * mouseSensitivity;
         turnUpDown -= cursorMove.y*mouseSensitivity;
@@ -62,6 +64,7 @@ public class PlayerInput : MonoBehaviour
         inputSystem.Player.CameraMove.performed += OnCameraMove;
         inputSystem.Player.CameraMove.canceled += OnCameraMove;
         inputSystem.Player.Inventory.started += OnInventory;
+        inputSystem.UI.CloseInventory.started += OnCloseInventory;
 
 
     }
@@ -74,6 +77,7 @@ public class PlayerInput : MonoBehaviour
         inputSystem.Player.CameraMove.performed -= OnCameraMove;
         inputSystem.Player.CameraMove.canceled -= OnCameraMove;
         inputSystem.Player.Inventory.started -= OnInventory;
+        inputSystem.UI.CloseInventory.started -= OnCloseInventory;
 
 
 
@@ -105,19 +109,17 @@ public class PlayerInput : MonoBehaviour
 
     private void OnInventory(InputAction.CallbackContext context)
     {
-        UIManager.Instance.ChangeUI(UIState.InventoryUI);
+        UIManager.Instance.ChangeUI(UIState.InventoryUI,true);
         inputSystem.Player.Disable();
         inputSystem.UI.Enable();
     }
-
-    private void OnInventoryHover()
+    private void OnCloseInventory(InputAction.CallbackContext context)
     {
-
+        UIManager.Instance.ChangeUI(UIState.InventoryUI, false);
+        inputSystem.UI.Disable();
+        inputSystem.Player.Enable();
+        
     }
-
-    private void OnInventorySelect()
-    {
-
-    }
+    
 
 }

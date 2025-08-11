@@ -18,7 +18,7 @@ public class DataManager : MonoBehaviour
     void Start()
     {
         dataList = Resources.LoadAll<ItemData>("ScriptableObjects").ToList();
-        Debug.Log(dataList.Count);
+
         SetData();
     }
 
@@ -31,7 +31,7 @@ public class DataManager : MonoBehaviour
                 ItemDataDictionary.Add(item.itemName, item);
             }
         }
-        Debug.Log(ItemDataDictionary.Count);
+
     }
 
     public ItemData GetItemInfo(string itemName)

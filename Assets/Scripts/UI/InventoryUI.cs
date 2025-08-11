@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+
 public class InventoryUI : BaseUI
 {
     [SerializeField] GameObject SlotBG;
@@ -19,7 +20,7 @@ public class InventoryUI : BaseUI
     List<Slot> SlotList=new List<Slot>();
 
     Slot selectedSlot;
-
+    private bool isFoundSlot;
     public override UIState State => UIState.InventoryUI;
 
     public override void Init()
@@ -51,16 +52,23 @@ public class InventoryUI : BaseUI
         
     void FindStack(ItemData itemData)
     {
+        isFoundSlot = false;
         for(int i = 0; i < SlotList.Count; i++)
         {
-            if (itemData == SlotList[i])
+            if (itemData == SlotList[i].Slotitem)
             {
                 
-                SlotList[i].quantity++;
+                //SlotList[i].quantity++;
                 PutItem(SlotList[i], itemData);
+                isFoundSlot=true;
                 break;
             }
         }
+        if(!isFoundSlot)
+        {
+            FindEmptySlot(itemData);
+        }
+        
        
     }
     void FindEmptySlot(ItemData itemData)
@@ -92,6 +100,11 @@ public class InventoryUI : BaseUI
     void PressUnEquipButton()
     {
 
+    }
+
+    void PressDiscardButton()
+    {
+        selectedSlot.DiscardSlotItems();
     }
 
     void OnClickUI(Slot slot)

@@ -156,8 +156,30 @@
         {
             "name": "UI",
             "id": "ca2576ec-fd1e-40ed-996d-4b50167b088f",
-            "actions": [],
-            "bindings": []
+            "actions": [
+                {
+                    "name": "CloseInventory",
+                    "type": "Button",
+                    "id": "0e88c1d3-b05c-4d98-9f3f-e1fcf77f4a3d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "a4992b17-b49e-4bef-9d9e-60705de6a152",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CloseInventory",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []
