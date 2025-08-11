@@ -10,11 +10,12 @@ using Unity.VisualScripting;
 public class Slot : MonoBehaviour,IPointerClickHandler
 {
     public bool IsEmpty { get; private set; } = true;
-    public int quantity;
+    public int Quantity { get; private set; } = 0;
     public ItemData Slotitem {  get; private set; }
 
  
     private Image image;
+    [SerializeField] Sprite emptyImage;
     private Outline outline;
     private TextMeshProUGUI quantityText;
 
@@ -46,8 +47,8 @@ public class Slot : MonoBehaviour,IPointerClickHandler
         
         IsEmpty = false;
         image.sprite = itemData.itemIcon;
-        quantity++;
-        quantityText.text=quantity.ToString(); 
+        Quantity++;
+        quantityText.text=Quantity.ToString(); 
         
     }
 
@@ -55,9 +56,10 @@ public class Slot : MonoBehaviour,IPointerClickHandler
     {
         IsEmpty = true;
         Slotitem = null;
-        image.sprite = null;
-        quantity = 0;
+        image.sprite = emptyImage;
+        Quantity = 0;
         outline.enabled = false;
+        Debug.Log(Quantity.ToString());
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -74,6 +76,16 @@ public class Slot : MonoBehaviour,IPointerClickHandler
     public void ChangeOutlineState(bool on)
     {
         outline.enabled = on;
+    }
+
+    public void ChangeQuantity(int quantity)
+    {
+        Quantity += quantity;
+        if(Quantity==0)
+        {
+            DiscardSlotItems();
+        }
+        quantityText.text = Quantity.ToString();
     }
 
     public ItemType GetTypeOfItem()

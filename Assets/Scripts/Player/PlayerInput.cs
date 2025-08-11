@@ -11,7 +11,7 @@ public class PlayerInput : MonoBehaviour
     Rigidbody rb;
  
     Vector2 inputVector;
-    private float moveSpeed = 5f;
+    private float moveSpeed =>player.Speed;
     private float jumpForce = 30f;
 
 

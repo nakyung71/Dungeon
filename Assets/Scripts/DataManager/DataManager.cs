@@ -42,6 +42,7 @@ public class DataManager : MonoBehaviour
         }
         else
         {
+            Debug.Log("사전에 없는 아이템");
             return null;
         }
     }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,13 +9,24 @@ public class Player : MonoBehaviour
     public float Health
     {
         get { return _health; }
-        set { _health = value; }
+        set 
+        { 
+            _health=Mathf.Clamp(value,0,100f);
+            
+        }
     }
     private float _stamina;
     public float Stamina
     {
         get { return _stamina; }
-        set { _stamina = value; }
+        set { _stamina = Mathf.Clamp(value, 0, 100f); }
+    }
+
+    private float _speed = 5f;
+    public float Speed
+    {
+        get { return _speed; }
+        set { _speed = value; }
     }
     [SerializeField] Transform cameraContainer;
 
@@ -31,8 +43,48 @@ public class Player : MonoBehaviour
         go.transform.localPosition = equipPosition;
 
     }
-    public void ChangeHealth()
+
+    public void UseItem(ItemData item)
+    {
+        if(item.valueType==ValueType.Health)
+        {
+            ChangeHealth(item.value);
+        }
+        else if(item.valueType==ValueType.Stamina)
+        {
+            ChangeStamina(item.value);
+        }
+        else
+        {
+            ChangeSpeed(item.value);
+            UIManager.Instance.gameUI.buffBar.SetBuffIcon(item);
+        }
+    }
+    public void ChangeHealth(float health)
+    {
+        Health += health;
+    }
+    public void ChangeStamina(float stamina)
+    {
+        Stamina += stamina;
+    }
+    public void ChangeSpeed(float speed)
+    {
+        Speed += speed;
+        StartCoroutine(PotionEffect(speed));
+    }
+
+
+    //public  Action OnBuffDisappear;
+    private IEnumerator PotionEffect(float speed)
     {
 
+        yield return new WaitForSeconds(20f);
+        //그냥 끄는거면 그냥 여기에 델리게이트 이벤트 달든 해서 끄면 됨
+        //근데 5초전에도 알려주고싶어 깜빡이게
+        //OnBuffDisappear?.Invoke();
+
+        ChangeSpeed(-speed);
+        Debug.Log("스피드감소");
     }
 }

@@ -98,7 +98,10 @@ public class InventoryUI : BaseUI
         
         if (selectedSlot.Slotitem.itemType == ItemType.Potions)
         {
-            Debug.Log("사용했다");
+            UIManager.Instance.player.UseItem(selectedSlot.Slotitem);
+
+            selectedSlot.ChangeQuantity(-1);
+           
         }
         else if (selectedSlot.Slotitem.itemType == ItemType.Equipment)
         {

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 
 
@@ -11,6 +12,17 @@ public enum ItemType
     Potions,
     Equipment,
     Normal
+
+}
+
+public enum ValueType
+{
+    None,
+    Health,
+    Stamina,
+    Speed,
+    Attack,
+    Defence,
 
 }
 
@@ -24,6 +36,8 @@ public class ItemData : ScriptableObject
     public Sprite itemIcon;
     public GameObject itemPrefab;
     public GameObject equipPrefab;
+    public float value;
+    public ValueType valueType;
 
     
 }
