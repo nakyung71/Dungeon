@@ -31,7 +31,8 @@ public class EnemyController : MonoBehaviour
 
     private float previousSightRange;
     private float previousAttackRange;
-    
+
+    Coroutine currentCorutine;
     private void Start()
     {
         player=PlayerManager.instance.player.transform;
@@ -57,7 +58,12 @@ public class EnemyController : MonoBehaviour
         {
             if(agent.path.status== NavMeshPathStatus.PathPartial ||agent.path.status== NavMeshPathStatus.PathInvalid)
             {
-                StartCoroutine(ForcePatrolMode());
+                if(currentCorutine==null) 
+                {
+                    currentCorutine = StartCoroutine(ForcePatrolMode());
+
+                }
+                
             }
             ChasePlayer();
 
@@ -73,6 +79,7 @@ public class EnemyController : MonoBehaviour
 
     IEnumerator ForcePatrolMode()
     {
+        
         Debug.Log("강제 정찰 모드");
         previousSightRange = sightRange;
         previousAttackRange = attackRange;
@@ -81,6 +88,7 @@ public class EnemyController : MonoBehaviour
         yield return new WaitForSeconds(3f);
         sightRange = previousSightRange;
         attackRange = previousAttackRange;
+        currentCorutine = null;
     }
 
    
