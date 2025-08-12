@@ -32,6 +32,7 @@ public class InventoryUI : BaseUI
         }
         Slot.OnSlotClick += OnClickUI;
         equipButton.onClick.AddListener(PressEquipButton);
+        discardButton.onClick.AddListener(PressDiscardButton);
         
     }
 
@@ -116,7 +117,10 @@ public class InventoryUI : BaseUI
 
     void PressDiscardButton()
     {
+        GameObject go= Instantiate(selectedSlot.Slotitem.itemPrefab);
+        go.transform.position = PlayerManager.instance.player.transform.position + PlayerManager.instance.player.transform.forward * 1f;
         selectedSlot.DiscardSlotItems();
+        
     }
 
     void OnClickUI(Slot slot)

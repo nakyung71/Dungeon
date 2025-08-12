@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     {
         PlayerManager.instance.player = this;
     }
-    private float _health;
+    private float _health = 100f;
     public float Health
     {
         get { return _health; }
@@ -36,12 +36,9 @@ public class Player : MonoBehaviour
     [SerializeField] Transform cameraContainer;
 
     Vector3 equipPosition = new Vector3(0.6f, -0.7f, 1f);
+    public Action<float> OnChangeHealth;
 
-
-    private void Start()
-    {
-        
-    }
+    
     public void Equip(ItemData item)
     {
         GameObject go = Instantiate(item.equipPrefab, cameraContainer);
@@ -68,6 +65,7 @@ public class Player : MonoBehaviour
     public void ChangeHealth(float health)
     {
         Health += health;
+        OnChangeHealth?.Invoke(Health);
     }
     public void ChangeStamina(float stamina)
     {

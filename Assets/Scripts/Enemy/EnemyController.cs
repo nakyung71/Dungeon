@@ -28,6 +28,10 @@ public class EnemyController : MonoBehaviour
     public bool playerInSightRange;
     public bool playerInAttackRange;
 
+
+    private float previousSightRange;
+    private float previousAttackRange;
+    
     private void Start()
     {
         player=PlayerManager.instance.player.transform;
@@ -40,21 +44,20 @@ public class EnemyController : MonoBehaviour
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange,playerLayerMask);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, playerLayerMask);
 
-        
-
+        //구현하고싶은거
+        //플레이어가 safezone에 들어가면 (즉 몬스터가 접근불가한 구역에 진입>이후 그냥 정찰상태로 돌아가면 좋겠음)
+        //문제점: 만약 그럴때 내가 정찰하라고 명령을 내려도 플레이어가 시야 안에 들어와있는 상태가 유지되니까 해결되지않음.
+        //해결책 1) 짧은 시간동안 시야를 줄인다
+        //해결책 2) 아예 플레이어를 쫒는 조건 자체를 바꾼다
         if(!playerInSightRange&&!playerInAttackRange)
         {
             Patroling();
         }
         else if(playerInSightRange&&!playerInAttackRange)
         {
-            
-            
-            if (agent.pathStatus == NavMeshPathStatus.PathPartial || agent.pathStatus == NavMeshPathStatus.PathInvalid)
+            if(agent.path.status== NavMeshPathStatus.PathPartial ||agent.path.status== NavMeshPathStatus.PathInvalid)
             {
-                Debug.Log("접근 금지 구역/플레이어 안전구역 입성, 경로 재탐색");
-                Patroling();
-                return;
+                StartCoroutine(ForcePatrolMode());
             }
             ChasePlayer();
 
@@ -63,7 +66,24 @@ public class EnemyController : MonoBehaviour
         {
             AttackPlayer();
         }
+
+       
+        
     }
+
+    IEnumerator ForcePatrolMode()
+    {
+        Debug.Log("강제 정찰 모드");
+        previousSightRange = sightRange;
+        previousAttackRange = attackRange;
+        sightRange = 0f;
+        attackRange = 0f;
+        yield return new WaitForSeconds(3f);
+        sightRange = previousSightRange;
+        attackRange = previousAttackRange;
+    }
+
+   
 
     private void Patroling()
     {

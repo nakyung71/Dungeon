@@ -6,6 +6,7 @@ public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager instance;
 
+
     public Player player;
     public PlayerInput playerInput;
     public PlayerInteraction playerInteraction;
@@ -16,9 +17,5 @@ public class PlayerManager : MonoBehaviour
         instance = this;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+  
 }
