@@ -5,14 +5,8 @@ using UnityEngine;
 public class PlayerInventory : MonoBehaviour
 {
     List<Item> InventoryList=new List<Item>();
-    void Start()
+    private void Awake()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        PlayerManager.instance.playerInventory = this;
     }
 }

@@ -7,11 +7,12 @@ using static UnityEngine.InputSystem.UI.VirtualMouseInput;
 
 public class PlayerInput : MonoBehaviour
 {
+    
     InputSystem inputSystem;
     Rigidbody rb;
  
     Vector2 inputVector;
-    private float moveSpeed =>player.Speed;
+    private float moveSpeed =>PlayerManager.instance.player.Speed;
     private float jumpForce = 30f;
 
 
@@ -24,12 +25,12 @@ public class PlayerInput : MonoBehaviour
     float turnUpDown;
 
     [SerializeField] Transform cameraTransform;
-    Player player;
+
     [Range(0,1)] [SerializeField] float mouseSensitivity;
 
     
 
-
+    
     private void OnCameraMove(InputAction.CallbackContext context)
     {
         cursorMove = context.ReadValue<Vector2>();
@@ -50,8 +51,9 @@ public class PlayerInput : MonoBehaviour
     private void Awake()
     {
         inputSystem=new InputSystem();
-        player = GetComponent<Player>();
+        
         rb = GetComponent<Rigidbody>();
+        PlayerManager.instance.playerInput = this;
     }
 
     private void OnEnable()

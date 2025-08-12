@@ -10,7 +10,12 @@ public class PlayerInteraction : MonoBehaviour
     float rayDistance = 5f;
     Vector3 cameraMiddle = new Vector3(0.5f, 0.5f, 0f);
     IInteractable lastTriggeredInteractable;
-    
+
+    private void Awake()
+    {
+        PlayerManager.instance.playerInteraction = this;
+    }
+
     // Update is called once per frame
     void Update()
     {

@@ -98,14 +98,14 @@ public class InventoryUI : BaseUI
         
         if (selectedSlot.Slotitem.itemType == ItemType.Potions)
         {
-            UIManager.Instance.player.UseItem(selectedSlot.Slotitem);
+            PlayerManager.instance.player.UseItem(selectedSlot.Slotitem);
 
             selectedSlot.ChangeQuantity(-1);
            
         }
         else if (selectedSlot.Slotitem.itemType == ItemType.Equipment)
         {
-            UIManager.Instance.player.Equip(selectedSlot.Slotitem);
+            PlayerManager.instance.player.Equip(selectedSlot.Slotitem);
         }
     }
 

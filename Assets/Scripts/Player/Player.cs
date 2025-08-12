@@ -5,6 +5,11 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+
+    private void Awake()
+    {
+        PlayerManager.instance.player = this;
+    }
     private float _health;
     public float Health
     {
