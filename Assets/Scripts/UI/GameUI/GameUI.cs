@@ -10,12 +10,19 @@ public class GameUI : MonoBehaviour
     public GameObject healthBar;
     public GameObject staminaBar;
     public RectTransform rectTransform;
+    public Image damageIndicator;
+    Coroutine currentCoroutine;
+    Color damageIndicatorColor;
 
+
+    private float duration = 1f;
+    private float elapsedTime = 0f;
     private void Start()
     {
         buffBar = GetComponentInChildren<BuffBar>();
         PlayerManager.instance.player.OnChangeHealth += UpdateHealthBar;
-        
+        PlayerManager.instance.player.OnChangeHealth += TurnOnDamageIndicator;
+        damageIndicatorColor=damageIndicator.color;
     }
 
     void UpdateHealthBar(float health)
@@ -24,5 +31,27 @@ public class GameUI : MonoBehaviour
         Debug.Log(health);
     }
     
+    void TurnOnDamageIndicator(float health)
+    {
+        damageIndicator.enabled = true;
+        currentCoroutine=StartCoroutine(DamageIndicator());
+    }
+
+
+    IEnumerator DamageIndicator()
+    {
+        elapsedTime = 0;
+        while(elapsedTime<duration)
+        {
+            elapsedTime += Time.deltaTime;
+            float t = elapsedTime / duration;
+            damageIndicatorColor.a = Mathf.Lerp(1, 0, t);
+            damageIndicator.color = damageIndicatorColor;
+            yield return null;
+        }
+        damageIndicator.enabled = false;
+        currentCoroutine = null;
+
+    }
 
 }

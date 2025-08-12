@@ -88,6 +88,6 @@ public class Player : MonoBehaviour
         //OnBuffDisappear?.Invoke();
 
         ChangeSpeed(-speed);
-        Debug.Log("스피드감소");
+        
     }
 }
