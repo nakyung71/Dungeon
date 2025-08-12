@@ -6,7 +6,7 @@ public class JumpPanel : MonoBehaviour
 {
 
     Rigidbody rb;
-    float jumpPanelForce = 100f;
+    float jumpPanelForce = 50f;
 
     private void OnTriggerEnter(Collider other)
     {

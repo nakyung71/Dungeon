@@ -20,7 +20,7 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0, g: 0, b: 0, a: 1}
+  m_AmbientSkyColor: {r: 1, g: 1, b: 1, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
@@ -374,7 +374,7 @@ GameObject:
   - component: {fileID: 82664134}
   - component: {fileID: 82664136}
   - component: {fileID: 82664135}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -427,8 +427,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.3730202, y: 0.5467989, z: 2.3669214}
-  m_Center: {x: -0.059928894, y: 0.22660056, z: 0.050881863}
+  m_Size: {x: 1.9288869, y: 0.5467989, z: 1.7577448}
+  m_Center: {x: 1.1597631, y: 0.22660056, z: 0.97132826}
 --- !u!1 &113000951
 GameObject:
   m_ObjectHideFlags: 0
@@ -3048,12 +3048,12 @@ GameObject:
   - component: {fileID: 725691957}
   - component: {fileID: 725691959}
   m_Layer: 7
-  m_Name: EquipCamera
+  m_Name: TrapSeeCamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &725691957
 Transform:
   m_ObjectHideFlags: 0
@@ -3105,10 +3105,10 @@ Camera:
   field of view: 60
   orthographic: 0
   orthographic size: 5
-  m_Depth: -1
+  m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 256
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -3873,7 +3873,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 247
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -7884,13 +7884,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1363698818}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: JumpPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1363698818
 Transform:
   m_ObjectHideFlags: 0
@@ -7900,7 +7900,7 @@ Transform:
   m_GameObject: {fileID: 1363698817}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -15.16, y: 0.03, z: -12.1}
+  m_LocalPosition: {x: -7.22, y: 0.03, z: -9.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -14684,7 +14684,7 @@ GameObject:
   - component: {fileID: 3444829865889727437}
   - component: {fileID: 4729723301189344949}
   - component: {fileID: 1563464523688027066}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ground_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14977,7 +14977,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 18f63ff904099034daf971dac5b32582, type: 2}
+  - {fileID: 2100000, guid: 2f12fcec4b3dcc0489472b3a9cfa44c1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -15134,8 +15134,8 @@ Transform:
   m_GameObject: {fileID: 916917377354715406}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 1.23, y: 0, z: 0.97}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1363698818}
