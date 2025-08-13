@@ -25,6 +25,7 @@ public class PlayerInteraction : MonoBehaviour
         if(lastTriggeredInteractable != null&&Input.GetKeyDown(KeyCode.E))
         {
             lastTriggeredInteractable.Interact();
+            lastTriggeredInteractable = null;
         }
     }
 
