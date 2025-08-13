@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5269940748757867652}
   - component: {fileID: 6686687365180124283}
   - component: {fileID: 8710494843573744332}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SpeedPotionSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 2218904515379196539}
   - component: {fileID: 5906597753489528499}
   - component: {fileID: 8709632648367623669}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SpeedPotion
   m_TagString: Untagged
   m_Icon: {fileID: 0}

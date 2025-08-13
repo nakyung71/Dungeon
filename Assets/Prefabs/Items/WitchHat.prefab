@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7435529502661757334}
   - component: {fileID: 2282977544570172001}
   - component: {fileID: -5545573026798374889}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: WitchHat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79,7 +79,7 @@ GameObject:
   - component: {fileID: 3570115292423076827}
   - component: {fileID: 8886925534186854048}
   - component: {fileID: 6318283167457160157}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: witch-hat
   m_TagString: Untagged
   m_Icon: {fileID: 0}

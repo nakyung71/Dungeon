@@ -177,7 +177,8 @@ public class InventoryUI : BaseUI
 
     void PressDiscardButton()
     {
-        GameObject go= Instantiate(selectedSlot.Slotitem.itemPrefab);
+        
+        GameObject go= Instantiate(DataManager.instance.GetItemInfo(selectedSlot.Slotitem.itemName).itemPrefab);
         go.transform.position = PlayerManager.instance.player.transform.position + PlayerManager.instance.player.transform.forward * 1f;
         selectedSlot.DiscardSlotItems();
         

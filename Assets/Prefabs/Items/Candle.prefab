@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5048755206818422790}
   - component: {fileID: 6157825138421918204}
   - component: {fileID: 4362754781193181468}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: candle-stick-c-lit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 7333395092841042458}
   - component: {fileID: -7200256621199789369}
   - component: {fileID: 4311259890069322907}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Candle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
