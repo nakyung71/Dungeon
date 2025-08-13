@@ -84,11 +84,11 @@ public class Player : MonoBehaviour
     public void ChangeHealth(float health)
     {
         Health += health;
-        if(health <0)
-        {
-            OnChangeHealth?.Invoke(Health);
-        }
-        
+        OnChangeHealth?.Invoke(health);
+
+
+
+
     }
     public void ChangeStamina(float stamina)
     {

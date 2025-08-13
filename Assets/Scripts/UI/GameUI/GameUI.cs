@@ -15,7 +15,7 @@ public class GameUI : MonoBehaviour
     Color damageIndicatorColor;
     public GameObject witchVision;
 
-
+    private float previousHealth = 100f;
     private float duration = 1f;
     private float elapsedTime = 0f;
     private void Start()
@@ -28,14 +28,18 @@ public class GameUI : MonoBehaviour
 
     void UpdateHealthBar(float health)
     {
-        rectTransform.sizeDelta = new Vector2((health/100f)*300f, 45f);
-        Debug.Log(health);
+        rectTransform.sizeDelta = new Vector2(((previousHealth+health)/100f)*300f, 45f);
+        previousHealth=previousHealth+health;
     }
     
     void TurnOnDamageIndicator(float health)
     {
-        damageIndicator.enabled = true;
-        currentCoroutine=StartCoroutine(DamageIndicator());
+        if(health < 0f)
+        {
+            damageIndicator.enabled = true;
+            currentCoroutine = StartCoroutine(DamageIndicator());
+        }
+        
     }
 
 
