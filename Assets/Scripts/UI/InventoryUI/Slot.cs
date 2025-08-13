@@ -13,6 +13,7 @@ public class Slot : MonoBehaviour,IPointerClickHandler
     public int Quantity { get; private set; } = 0;
     public ItemData Slotitem {  get; private set; }
 
+    public bool IsEquipped = false;
  
     private Image image;
     [SerializeField] Sprite emptyImage;
@@ -59,7 +60,8 @@ public class Slot : MonoBehaviour,IPointerClickHandler
         image.sprite = emptyImage;
         Quantity = 0;
         outline.enabled = false;
-        Debug.Log(Quantity.ToString());
+        IsEquipped = false;
+
     }
 
     public void OnPointerClick(PointerEventData eventData)

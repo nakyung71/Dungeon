@@ -10,11 +10,13 @@ using UnityEngine.UI;
 public class InventoryUI : BaseUI
 {
     [SerializeField] GameObject SlotBG;
+    [SerializeField] Button useButton;
     [SerializeField] Button equipButton;
+    [SerializeField] Button unEquipButton;
     [SerializeField] Button discardButton;
     [SerializeField] TextMeshProUGUI itemNameText;
     [SerializeField] TextMeshProUGUI itemDescriptionText;
-    [SerializeField] TextMeshProUGUI equipButtonText;
+
   
 
     List<Slot> SlotList=new List<Slot>();
@@ -32,11 +34,18 @@ public class InventoryUI : BaseUI
         }
         Slot.OnSlotClick += OnClickUI;
         equipButton.onClick.AddListener(PressEquipButton);
+        useButton.onClick.AddListener(PressUseButton);
         discardButton.onClick.AddListener(PressDiscardButton);
+        unEquipButton.onClick.AddListener(PressUnEquipButton);
         
     }
 
-    
+    private void OnEnable()
+    {
+        unEquipButton.gameObject.SetActive(false);
+        equipButton.gameObject.SetActive(false);
+        useButton.gameObject.SetActive(false);
+    }
     public void AddInventory(ItemData itemData)
     {
 
@@ -93,30 +102,59 @@ public class InventoryUI : BaseUI
         slot.SetSlot(itemData);
         
     }
+    void PressUseButton()
+    {
+        PlayerManager.instance.player.UseItem(selectedSlot.Slotitem);
+
+        selectedSlot.ChangeQuantity(-1);
+    }
+    void ChangeButtonStatus(Slot slot)
+    {
+        if(slot.IsEquipped)
+        {
+            equipButton.gameObject.SetActive(false);
+            unEquipButton.gameObject.SetActive(true);
+        }
+        else
+        {
+            equipButton.gameObject.SetActive(true);
+            unEquipButton.gameObject.SetActive(false);
+        }
+    }
+
 
     void PressEquipButton()
     {
         
-        if (selectedSlot.Slotitem.itemType == ItemType.Potions)
-        {
-            PlayerManager.instance.player.UseItem(selectedSlot.Slotitem);
-
-            selectedSlot.ChangeQuantity(-1);
-           
-        }
-        else if (selectedSlot.Slotitem.itemType == ItemType.Equipment)
+        
+        if (selectedSlot.Slotitem.itemType == ItemType.Equipment)
         {
             PlayerManager.instance.player.Equip(selectedSlot.Slotitem);
+            selectedSlot.IsEquipped=true;
+            ChangeButtonStatus(selectedSlot);
         }
         else if(selectedSlot.Slotitem.itemType==ItemType.VisionChange)
         {
             PlayerManager.instance.player.ChangeVision(true);
+            selectedSlot.IsEquipped = true;
+            ChangeButtonStatus(selectedSlot);
         }
     }
 
     void PressUnEquipButton()
     {
-
+        if (selectedSlot.Slotitem.itemType == ItemType.Equipment)
+        {
+            PlayerManager.instance.player.UnEquip(selectedSlot.Slotitem);
+            selectedSlot.IsEquipped = false;
+            ChangeButtonStatus (selectedSlot);
+        }
+        else if (selectedSlot.Slotitem.itemType == ItemType.VisionChange)
+        {
+            PlayerManager.instance.player.ChangeVision(false);
+            selectedSlot.IsEquipped = false;
+            ChangeButtonStatus(selectedSlot);
+        }
     }
 
     void PressDiscardButton()
@@ -141,6 +179,7 @@ public class InventoryUI : BaseUI
         slot.ChangeOutlineState(true);
         itemNameText.text = slot.Slotitem.itemName;
         itemDescriptionText.text = slot.Slotitem.description;
+        
         discardButton.gameObject.SetActive(true);
 
         ItemType type= slot.GetTypeOfItem(); 
@@ -151,13 +190,24 @@ public class InventoryUI : BaseUI
         }
         else if(type==ItemType.Potions)
         {
-            equipButton.gameObject.SetActive(true);
-            equipButtonText.text = "Use";
+            useButton.gameObject.SetActive(true);
+    
         }
         else if(type==ItemType.Equipment||type==ItemType.VisionChange)
         {
-            equipButton.gameObject.SetActive(true);
-            equipButtonText.text = "Equip";
+            if(selectedSlot.IsEquipped)
+            {
+                equipButton.gameObject.SetActive(false);
+                unEquipButton.gameObject.SetActive(true);
+            }
+            else
+            {
+                unEquipButton.gameObject.SetActive(false);
+                equipButton.gameObject.SetActive(true);
+            }
+             
+
+
         }
         
     }

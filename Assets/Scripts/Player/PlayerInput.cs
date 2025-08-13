@@ -114,6 +114,7 @@ public class PlayerInput : MonoBehaviour
         UIManager.Instance.ChangeUI(UIState.InventoryUI,true);
         inputSystem.Player.Disable();
         inputSystem.UI.Enable();
+        
     }
     private void OnCloseInventory(InputAction.CallbackContext context)
     {

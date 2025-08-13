@@ -1,11 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-
+    GameObject currentEquipItem;
     private void Awake()
     {
         PlayerManager.instance.player = this;
@@ -44,7 +45,17 @@ public class Player : MonoBehaviour
         
         GameObject go = Instantiate(item.equipPrefab, cameraContainer);
         go.transform.localPosition = equipPosition;
+        currentEquipItem = go;
 
+    }
+
+    public void UnEquip(ItemData item)
+    {
+        Debug.Log("Âø¿ëÇØÁ¦");
+        Destroy(currentEquipItem);
+        currentEquipItem = null;
+        
+       
     }
 
     public void UseItem(ItemData item)
