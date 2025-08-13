@@ -15,6 +15,7 @@ public class JumpPanel : MonoBehaviour
 
             rb=other.GetComponent<Rigidbody>();
             rb.AddForce(Vector3.up*jumpPanelForce,ForceMode.Impulse);
+            other.GetComponent<Player>()?.ChangeHealth(-5);
         }
     }
 }

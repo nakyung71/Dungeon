@@ -114,14 +114,28 @@ public class InventoryUI : BaseUI
     }
     void ChangeButtonStatus(Slot slot)
     {
-        if(slot.IsEquipped)
+        if(slot.Slotitem.itemType==ItemType.Potions)
         {
+            useButton.gameObject.SetActive(true);
+            equipButton.gameObject.SetActive(false);
+            unEquipButton.gameObject.SetActive(false);
+        }
+        else if((slot.Slotitem.itemType==ItemType.Equipment||slot.Slotitem.itemType==ItemType.VisionChange)&&slot.IsEquipped)
+        {
+            useButton.gameObject.SetActive(false);
             equipButton.gameObject.SetActive(false);
             unEquipButton.gameObject.SetActive(true);
         }
+        else if ((slot.Slotitem.itemType == ItemType.Equipment || slot.Slotitem.itemType == ItemType.VisionChange) && slot.IsEquipped==false)
+        {
+            useButton.gameObject.SetActive(false);
+            equipButton.gameObject.SetActive(true);
+            unEquipButton.gameObject.SetActive(false);
+        }
         else
         {
-            equipButton.gameObject.SetActive(true);
+            useButton.gameObject.SetActive(false);
+            equipButton.gameObject.SetActive(false);
             unEquipButton.gameObject.SetActive(false);
         }
     }
@@ -183,36 +197,8 @@ public class InventoryUI : BaseUI
         slot.ChangeOutlineState(true);
         itemNameText.text = slot.Slotitem.itemName;
         itemDescriptionText.text = slot.Slotitem.description;
-        
         discardButton.gameObject.SetActive(true);
-
-        ItemType type= slot.GetTypeOfItem(); 
-        if(type==ItemType.Normal||type==ItemType.Key)
-        {
-            equipButton.gameObject.SetActive(false);
-            
-        }
-        else if(type==ItemType.Potions)
-        {
-            useButton.gameObject.SetActive(true);
-    
-        }
-        else if(type==ItemType.Equipment||type==ItemType.VisionChange)
-        {
-            if(selectedSlot.IsEquipped)
-            {
-                equipButton.gameObject.SetActive(false);
-                unEquipButton.gameObject.SetActive(true);
-            }
-            else
-            {
-                unEquipButton.gameObject.SetActive(false);
-                equipButton.gameObject.SetActive(true);
-            }
-             
-
-
-        }
+        ChangeButtonStatus(slot);
         
     }
 
