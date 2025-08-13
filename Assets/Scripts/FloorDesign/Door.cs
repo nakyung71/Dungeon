@@ -60,6 +60,10 @@ public class Door : MonoBehaviour, IInteractable
            
     }
 
+    public string ShowInteractionPhase()
+    {
+        return "E를 통해 문을 열 수 있습니다 ( 호박 열쇠 3개 필요 )";
+    }
 }
 
     

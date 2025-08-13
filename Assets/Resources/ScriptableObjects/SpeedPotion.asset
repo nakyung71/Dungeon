@@ -15,6 +15,7 @@ MonoBehaviour:
   itemName: SpeedPotion
   description: "\uB9C8\uC2DC\uBA74 \uC77C\uC815\uC2DC\uAC04\uB3D9\uC548 \uBE68\uB9AC
     \uB2EC\uB9B4 \uC218 \uC788\uB2E4"
+  interactPhrase: "E\uB97C \uB20C\uB7EC \uC778\uBCA4\uD1A0\uB9AC\uC5D0 \uB123\uAE30"
   itemType: 1
   IsStackable: 1
   itemIcon: {fileID: 21300000, guid: a6388dbab3f76d08892a83d91c1bdd50, type: 3}

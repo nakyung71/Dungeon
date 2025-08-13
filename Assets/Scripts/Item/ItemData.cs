@@ -32,6 +32,7 @@ public class ItemData : ScriptableObject
 {
     public string itemName;
     public string description;
+    public string interactPhrase;
     public ItemType itemType;
     public bool IsStackable;
     public Sprite itemIcon;

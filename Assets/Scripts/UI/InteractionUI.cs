@@ -8,6 +8,7 @@ public class InteractionUI : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI nameText;
     [SerializeField] TextMeshProUGUI descriptionText;
+    [SerializeField] TextMeshProUGUI interactionPhaseText;
 
     // Start is called before the first frame update
 
@@ -23,5 +24,10 @@ public class InteractionUI : MonoBehaviour
     public void ShowObjectDescription(IInteractable interactable)
     {
         descriptionText.text = interactable.ShowDescription();
+    }
+
+    public void ShowObjectInteractionPhase(IInteractable interactable)
+    {
+        interactionPhaseText.text = interactable.ShowInteractionPhase();
     }
 }

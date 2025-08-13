@@ -7,6 +7,7 @@ public interface IInteractable
 {
     string ShowName();
     string ShowDescription();
+    string ShowInteractionPhase();
     void Interact();
 
 
@@ -35,6 +36,11 @@ public class Item : MonoBehaviour, IInteractable
     public string ShowDescription()
     {
         return itemdata.description;
+    }
+
+    public string ShowInteractionPhase()
+    {
+        return itemdata.interactPhrase;
     }
 
     public string ShowName()

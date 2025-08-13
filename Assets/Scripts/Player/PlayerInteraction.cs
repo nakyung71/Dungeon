@@ -43,6 +43,8 @@ public class PlayerInteraction : MonoBehaviour
                 UIManager.Instance.ChangeUI(UIState.InteractionUI,true);
                 UIManager.Instance.interactionUI.ShowObjectName(interactable);
                 UIManager.Instance.interactionUI.ShowObjectDescription(interactable);
+                UIManager.Instance.interactionUI.ShowObjectInteractionPhase(interactable);
+                
                 return;
                 
             }
