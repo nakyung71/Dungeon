@@ -9,14 +9,16 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] Camera cam;
     float rayDistance = 5f;
     Vector3 cameraMiddle = new Vector3(0.5f, 0.5f, 0f);
+    [SerializeField] LayerMask interactionLayer;
     IInteractable lastTriggeredInteractable;
+
 
     private void Awake()
     {
         PlayerManager.instance.playerInteraction = this;
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         ShootRay();
@@ -31,7 +33,7 @@ public class PlayerInteraction : MonoBehaviour
         Ray ray = cam.ViewportPointToRay(cameraMiddle);
         RaycastHit hit;
         
-        if(Physics.Raycast(ray,out hit,rayDistance))
+        if(Physics.Raycast(ray,out hit,rayDistance,interactionLayer))
         {
             IInteractable interactable=hit.collider.GetComponent<IInteractable>();
             lastTriggeredInteractable = interactable;
@@ -41,15 +43,19 @@ public class PlayerInteraction : MonoBehaviour
                 UIManager.Instance.ChangeUI(UIState.InteractionUI,true);
                 UIManager.Instance.interactionUI.ShowObjectName(interactable);
                 UIManager.Instance.interactionUI.ShowObjectDescription(interactable);
-                
+                return;
                 
             }
             else
             {
+                
                 UIManager.Instance.ChangeUI(UIState.InteractionUI,false);
 
             }
             
+
         }
+        UIManager.Instance.ChangeUI(UIState.InteractionUI, false);
+
     }
 }

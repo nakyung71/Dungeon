@@ -70,7 +70,7 @@ public class Slot : MonoBehaviour,IPointerClickHandler
         }
         OnSlotClick?.Invoke(this);
         
-        Debug.Log(this);
+       
     }
 
     public void ChangeOutlineState(bool on)

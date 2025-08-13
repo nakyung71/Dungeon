@@ -41,6 +41,7 @@ public class Player : MonoBehaviour
     
     public void Equip(ItemData item)
     {
+        
         GameObject go = Instantiate(item.equipPrefab, cameraContainer);
         go.transform.localPosition = equipPosition;
 
@@ -62,6 +63,13 @@ public class Player : MonoBehaviour
             UIManager.Instance.gameUI.buffBar.SetBuffIcon(item);
         }
     }
+
+    public void ChangeVision(bool on)
+    {
+        UIManager.Instance.gameUI.witchVision.SetActive(on);
+    }
+
+
     public void ChangeHealth(float health)
     {
         Health += health;

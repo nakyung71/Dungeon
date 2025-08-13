@@ -13,6 +13,7 @@ public class GameUI : MonoBehaviour
     public Image damageIndicator;
     Coroutine currentCoroutine;
     Color damageIndicatorColor;
+    public GameObject witchVision;
 
 
     private float duration = 1f;

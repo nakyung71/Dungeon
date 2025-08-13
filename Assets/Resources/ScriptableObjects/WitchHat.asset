@@ -14,7 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: WitchHat
   description: "\uB9C8\uB140\uAC00 \uC4F0\uB358 \uBAA8\uC790\uB2E4"
-  itemType: 3
+  itemType: 4
   IsStackable: 0
   itemIcon: {fileID: 21300000, guid: 3db85a852068117488dd9c4da9f77809, type: 3}
   itemPrefab: {fileID: 2702633339914339734, guid: 5143055f4ee980644acc67648461ef1f, type: 3}
+  equipPrefab: {fileID: 0}
+  value: 0
+  valueType: 0

@@ -11,7 +11,8 @@ public enum ItemType
     Key,
     Potions,
     Equipment,
-    Normal
+    Normal,
+    VisionChange
 
 }
 

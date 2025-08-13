@@ -108,6 +108,10 @@ public class InventoryUI : BaseUI
         {
             PlayerManager.instance.player.Equip(selectedSlot.Slotitem);
         }
+        else if(selectedSlot.Slotitem.itemType==ItemType.VisionChange)
+        {
+            PlayerManager.instance.player.ChangeVision(true);
+        }
     }
 
     void PressUnEquipButton()
@@ -150,7 +154,7 @@ public class InventoryUI : BaseUI
             equipButton.gameObject.SetActive(true);
             equipButtonText.text = "Use";
         }
-        else if(type==ItemType.Equipment)
+        else if(type==ItemType.Equipment||type==ItemType.VisionChange)
         {
             equipButton.gameObject.SetActive(true);
             equipButtonText.text = "Equip";

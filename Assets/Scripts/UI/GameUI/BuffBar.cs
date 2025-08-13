@@ -6,19 +6,21 @@ using UnityEngine.UI;
 public class BuffBar : MonoBehaviour
 {
     [SerializeField] GameObject buffSlot;
-    Image slotImage;
 
+
+    
     public void SetBuffIcon(ItemData item)
     {
         GameObject go = Instantiate(buffSlot, transform);
-        slotImage= go.GetComponent<Image>();
+        Image slotImage= go.GetComponent<Image>();
         slotImage.sprite=item.itemIcon;
-        slotImage.gameObject.SetActive(true);
-        StartCoroutine(IconBlink());
+        go.SetActive(true);
+        StartCoroutine(IconBlink(go,slotImage));
     }
 
-    private IEnumerator IconBlink()
+    private IEnumerator IconBlink(GameObject go,Image slotImage)
     {
+        
         yield return new WaitForSeconds(15f);
         float blinktime = 5f;
         float elapsedTIme = 0f;
@@ -26,13 +28,13 @@ public class BuffBar : MonoBehaviour
         while (elapsedTIme < blinktime)
         {
            
-            slotImage.gameObject.SetActive(false);
+            slotImage.enabled = false;
             yield return new WaitForSeconds(0.25f);
-            slotImage.gameObject.SetActive(true);
+            slotImage.enabled = true;
             yield return new WaitForSeconds(0.25f);
             elapsedTIme += 0.5f;
         }
-        slotImage.gameObject.SetActive(false);
+        Destroy(go);
 
     }
 
