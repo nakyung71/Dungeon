@@ -5,6 +5,8 @@ using UnityEngine.UIElements;
 
 public class Door : MonoBehaviour, IInteractable
 {
+    private bool IsLeftOpen;
+    private bool IsRightOpen;
     enum DoorDirection
     {
         Left, 
@@ -13,7 +15,14 @@ public class Door : MonoBehaviour, IInteractable
     [SerializeField] DoorDirection doorDirection;
     public void Interact()
     {
-        Open();
+        if(UIManager.Instance.inventoryUI.LookForKey())
+        {
+            Open();
+        }
+        else
+        {
+
+        }
     }
 
     public string ShowDescription()
@@ -28,13 +37,25 @@ public class Door : MonoBehaviour, IInteractable
 
     void Open()
     {
-        if(doorDirection == DoorDirection.Left)
+        if (doorDirection == DoorDirection.Left && IsLeftOpen == false)
         {
             transform.Rotate(0, -90f, 0);
+            IsLeftOpen = true;
+        }
+        else if (doorDirection == DoorDirection.Left && IsLeftOpen == true)
+        {
+            transform.Rotate(0, 90f, 0);
+            IsLeftOpen = false;
+        }
+        else if(doorDirection == DoorDirection.Right && IsRightOpen == false) 
+        {
+            transform.Rotate(0, 90f, 0);
+            IsRightOpen = true;
         }
         else
         {
-            transform.Rotate(0, 90f, 0);
+            transform.Rotate(0, -90f, 0);
+            IsRightOpen = false;
         }
            
     }

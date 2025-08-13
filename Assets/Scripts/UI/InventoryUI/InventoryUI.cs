@@ -102,6 +102,10 @@ public class InventoryUI : BaseUI
         slot.SetSlot(itemData);
         
     }
+
+
+
+
     void PressUseButton()
     {
         PlayerManager.instance.player.UseItem(selectedSlot.Slotitem);
@@ -210,6 +214,31 @@ public class InventoryUI : BaseUI
 
         }
         
+    }
+
+    public bool LookForKey()
+    {
+        foreach(Slot slot in SlotList)
+        {
+            if(slot.Slotitem==null)
+            {
+                continue;
+            }
+            if (slot.Slotitem.itemType == ItemType.Key)
+            {
+                if (slot.Quantity >= 3)
+                {
+                    return true;
+                    
+                }
+                else
+                {
+                    return false;
+                }
+            }
+
+        }
+        return false;
     }
 
     

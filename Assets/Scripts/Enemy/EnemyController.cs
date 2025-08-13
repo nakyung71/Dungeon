@@ -104,7 +104,7 @@ public class EnemyController : MonoBehaviour
         if(distanceToWalkPoint.magnitude<2f)
         {
             isWalkPointSet = false;
-            Debug.Log("목적지 도달");
+            
         }
     }
     private void SearchWalkPoint()
@@ -116,7 +116,7 @@ public class EnemyController : MonoBehaviour
         if(Physics.Raycast(walkPoint,-transform.up,2f,groundLayerMask))
         {
             isWalkPointSet = true;
-            Debug.Log("목적지 설정완료");
+      
         }
     }
     private void ChasePlayer()

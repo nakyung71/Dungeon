@@ -9,4 +9,9 @@ public class PlayerInventory : MonoBehaviour
     {
         PlayerManager.instance.playerInventory = this;
     }
+
+    public void AddToPlayerInventory()
+    {
+
+    }
 }

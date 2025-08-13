@@ -4651,7 +4651,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Equip
+  m_text: Use
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a521e30d35b65234fb414b44e004d8d9, type: 2}
   m_sharedMaterial: {fileID: 6634449467948233555, guid: a521e30d35b65234fb414b44e004d8d9, type: 2}
@@ -10808,6 +10808,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SlotBG: {fileID: 698699617}
+  useButton: {fileID: 614123945}
   equipButton: {fileID: 2046283881}
   unEquipButton: {fileID: 335937810}
   discardButton: {fileID: 1700897847}
