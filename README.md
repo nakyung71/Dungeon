@@ -22,3 +22,6 @@ tab을 통해 인벤토리를 열수 있습니다.
 7. 화면이 빨개지며 데미지 받는 효과(Lerp와 코루틴을 활용)
 8. 마녀 모자 착용 시, 원래 보이지 않던 함정 점프대가 보이는 효과(cullingMask 활용)
 8. 함정 점프대를 밟을 시 데미지+튀어 오르는 효과(rigidbody forcemode impulse사용) 등
+
+[트러블 슈팅 및 구체적 내용 벨로그 주소]  
+https://velog.io/@nakyung71/%EA%B0%9C%EC%9D%B8%EA%B3%BC%EC%A0%9C%EB%8D%98%EC%A0%84%EB%A7%8C%EB%93%A4%EA%B8%B0-%ED%8A%B8%EB%9F%AC%EB%B8%94-%EC%8A%88%ED%8C%85-%EA%B8%B0%EB%8A%A5-%EC%A0%95%EB%A6%AC
