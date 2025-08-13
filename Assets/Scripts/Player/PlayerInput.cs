@@ -15,8 +15,8 @@ public class PlayerInput : MonoBehaviour
     private float moveSpeed =>PlayerManager.instance.player.Speed;
     private float jumpForce = 30f;
 
-
-
+    [SerializeField] LayerMask groundLayerMask;
+    private bool isGrounded;
     Vector2 cursorMove;
     float maxRot = 180f;
     float minrot = -180f;
@@ -90,6 +90,14 @@ public class PlayerInput : MonoBehaviour
     {
         Move();
         CameraMove();
+        if (Physics.Raycast(transform.position, Vector3.down, 1f, groundLayerMask))
+        {
+            isGrounded = true;
+        }
+        else
+        {
+            isGrounded = false;
+        }
     }
     private void Move()
     {
@@ -106,7 +114,11 @@ public class PlayerInput : MonoBehaviour
     }
     private void OnJump(InputAction.CallbackContext context)
     {
-        rb.AddForce(Vector3.up*jumpForce,ForceMode.Impulse);
+        if(isGrounded)
+        {
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        }
+        
     }
 
     private void OnInventory(InputAction.CallbackContext context)

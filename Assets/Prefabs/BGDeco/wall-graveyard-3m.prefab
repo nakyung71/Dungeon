@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6506231875679908038}
   - component: {fileID: 6939662422017379195}
   - component: {fileID: 8720353304691874694}
+  - component: {fileID: 8254754361126827354}
   m_Layer: 0
   m_Name: wall-graveyard-3m
   m_TagString: Untagged
@@ -101,8 +102,29 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 5
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 6948055394384261287, guid: 69f32e3beb2b24342a8ace60eb90e7fc, type: 3}
+--- !u!65 &8254754361126827354
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1712383095012949265}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.1773303, y: 3.7953942, z: 0.3449818}
+  m_Center: {x: -1.4157286, y: 1.8616308, z: 0.00044576824}

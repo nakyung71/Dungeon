@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class GameUI : MonoBehaviour
 {
-   public BuffBar buffBar;
+    public BuffBar buffBar;
 
     public GameObject healthBar;
     public GameObject staminaBar;
@@ -14,6 +14,8 @@ public class GameUI : MonoBehaviour
     Coroutine currentCoroutine;
     Color damageIndicatorColor;
     public GameObject witchVision;
+    public GameObject gameOver;
+
 
     private float previousHealth = 100f;
     private float duration = 1f;
@@ -24,6 +26,8 @@ public class GameUI : MonoBehaviour
         PlayerManager.instance.player.OnChangeHealth += UpdateHealthBar;
         PlayerManager.instance.player.OnChangeHealth += TurnOnDamageIndicator;
         damageIndicatorColor=damageIndicator.color;
+
+
     }
 
     void UpdateHealthBar(float health)

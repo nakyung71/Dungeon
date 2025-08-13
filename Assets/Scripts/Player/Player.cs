@@ -85,9 +85,10 @@ public class Player : MonoBehaviour
     {
         Health += health;
         OnChangeHealth?.Invoke(health);
-
-
-
+        if(Health<=0)
+        {
+            GameManager.instance.GameOver();
+        }
 
     }
     public void ChangeStamina(float stamina)
