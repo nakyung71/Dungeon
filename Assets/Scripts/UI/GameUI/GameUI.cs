@@ -15,6 +15,7 @@ public class GameUI : MonoBehaviour
     Color damageIndicatorColor;
     public GameObject witchVision;
     public GameObject gameOver;
+    public GameObject happyEnding;
 
 
     private float previousHealth = 100f;
